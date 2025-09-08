@@ -20,3 +20,16 @@ git --version
 - Learned how to set up a Linux VM
 - Installed and verified essential cybersecurity tools
 
+### Screenshots
+![Update Command](update_command.png)
+
+
+![Install Command](install_command.png)
+
+
+![Tools Versions](network_tools_version.png)
+
+
+![Python & Git Versions](python_git_version.png)
+
+
