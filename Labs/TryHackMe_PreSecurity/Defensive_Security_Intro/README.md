@@ -53,7 +53,8 @@ In this lab, I completed the TryHackMe **Defensive Security Intro** room. The go
 
 ## Screenshots
 - Screenshot of SIEM simulation and obtained flag:  
-  ![SIEM Simulation](screenshots/siem_simulation.png)
+  ![SIEM Simulation](siem_simulation.png)
+  ![SIEM Simulation](BLOCKED.png)
 
 ---
 
