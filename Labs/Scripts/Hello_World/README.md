@@ -39,4 +39,4 @@ if __name__ == "__main__":
 4. Documented my work for GitHub
 
 ###Screenshots
-
+![Terminal Output](terminal.png)
