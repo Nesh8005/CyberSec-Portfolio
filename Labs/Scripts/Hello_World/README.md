@@ -31,12 +31,12 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-###Lessons Learned
+### Lessons Learned
 
 1. Learned how to create folders and navigate directories in Linux
 2. Practiced creating and editing Python scripts
 3. Learned how to run Python scripts from the terminal
 4. Documented my work for GitHub
 
-###Screenshots
+### Screenshots
 ![Terminal Output](terminal.png)
