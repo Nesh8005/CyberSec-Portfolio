@@ -29,13 +29,13 @@ echo hello
 echo "hello"
 
 # Output a custom name
-echo "YourName"
+echo "Dineesh"
 ```
 Expected output:
 ```nginx
 hello
 hello
-YourName
+Dineesh
 ```
 
 
