@@ -1,12 +1,12 @@
 # Portfolio Activity : Home Asset Inventory
 
-## 📌 Overview
+##  Overview
 This activity focuses on creating an **asset inventory** for a home office network and classifying devices based on their sensitivity.  
 Asset management helps track devices, identify risks, and ensure security for both personal and business information.
 
 ---
 
-## 🖥️ Asset Inventory
+##  Asset Inventory
 
 | Asset              | Network Access | Owner                         | Location           | Notes                                                                 | Sensitivity             |
 |--------------------|----------------|-------------------------------|--------------------|-----------------------------------------------------------------------|-------------------------|
@@ -19,7 +19,7 @@ Asset management helps track devices, identify risks, and ensure security for bo
 
 ---
 
-## 🎯 Key Takeaways
+##  Key Takeaways
 - The **router** is the most critical asset, requiring strict confidentiality controls.  
 - **Storage devices** and **smartphones** hold sensitive personal information and must be protected with restrictions.  
 - **Smart home devices** and **game consoles** don’t hold much sensitive info but can serve as entry points if compromised.  
@@ -27,4 +27,4 @@ Asset management helps track devices, identify risks, and ensure security for bo
 
 ---
 
-✅ *Completed as part of the Google Cybersecurity Professional Certificate – Module 5: Assets, Threats, and Vulnerabilities.*
+ *Completed as part of the Google Cybersecurity Professional Certificate – Module 5: Assets, Threats, and Vulnerabilities.*
