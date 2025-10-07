@@ -7,16 +7,16 @@ Filtering helps narrow down traffic by protocol, port, or IP address, making pac
 ### 🧩 Command Used
 
 To capture only HTTP (port 80) traffic:
-
+```bash
 sudo tcpdump -i any port 80
-
+```
 
 You can also filter by protocol, IP, or a combination:
-
+```bash
 sudo tcpdump -i any tcp
 sudo tcpdump -i any host 192.168.56.101
 sudo tcpdump -i any port 443
-
+```
 ### ✅ Output (Kali Linux Example)
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
