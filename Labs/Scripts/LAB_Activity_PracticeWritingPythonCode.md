@@ -1,4 +1,4 @@
-# Activity: Practice writing Python code
+Practice writing Python code
 
 ## Introduction
 
