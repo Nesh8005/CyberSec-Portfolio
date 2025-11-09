@@ -66,7 +66,6 @@ $ cat ./...Hiding-From-You
 [REDACTED_PASSWORD_FOR_PUBLIC]
 ```
 
-> Note: The actual password text should be stored in your local notes file (do not publish real passwords in a public repo). Replace `[REDACTED_PASSWORD_FOR_PUBLIC]` with the real password in your private copy if you want to SSH into `bandit4`.
 
 ---
 
