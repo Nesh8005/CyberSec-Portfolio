@@ -48,7 +48,7 @@ $ ls -la
 -rw-r----- 1 bandit11 bandit10 69 Oct 14 09:25 data.txt
 
 $ base64 -d data.txt
-The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+The password is [REDACTED_PASSWORD_FOR_PUBLIC]
 ```
 
 ---
@@ -57,7 +57,8 @@ The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 
 * **Path to file:** `./data.txt`
 * **Command used to read it:** `base64 -d data.txt`
-* **Password / flag:** `dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr` (REDACTED in public docs)
+* **Password / flag:** `[REDACTED_PASSWORD_FOR_PUBLIC]
+` (REDACTED in public docs)
 * **Next step:** SSH into `bandit11` using the found password
 
 ---
