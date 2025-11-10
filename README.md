@@ -17,8 +17,8 @@ This repo documents my cybersecurity learning journey through labs, projects, an
 
 ## 🏆 Certifications (in progress / earned)
 - CCNA: Introduction to Networks ✅
-- Google Cybersecurity Professional Certificate (in progress)
-- CompTIA Security+ (planned)
+- Google Cybersecurity Professional Certificate ✅
+- eJPT (planned)
 - CEH (planned)
 - OSCP (planned)
 - TryHackMe Pre-Security Path ✅
