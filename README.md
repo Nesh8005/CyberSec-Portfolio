@@ -1,26 +1,27 @@
-# 🟩 Dineesh Mahendran — Cybersecurity and Digital Forensics Explorer
+# 🛡️ Cybersecurity Portfolio — Dineesh
+## ⚡ Breaking Things Carefully • Learning Fast • Building Real Skills
 
-Cybersecurity student | CCNA Certified | TryHackMe Adventurer | Aspiring SOC and Forensics Specialist
+Welcome to my GitHub command center. This is where I document my journey into cybersecurity with hands-on labs, scripts, writeups and future red team projects.
 
-This repo serves as my evidence locker packed with labs, scripts, investigations, and reports collected throughout my cybersecurity journey.
+Everything here reflects what I’ve learned, what I’m experimenting with and what I’m building next.
 
 ---
 
-## 📂 Repository Structure
-
+## 📂 Repository Layout
 ### **Labs/**
-Hands-on practice from Google Cybersecurity, Qwiklabs, TryHackMe, and packet analysis deep dives.
+Exercises from Google Cybersecurity Certificate, TryHackMe, networking practice and DNS analysis.
 
 ### **Scripts/**
-Python and Bash experiments ranging from tiny utilities to early automation tools.
+Small but mighty Python and Bash tools. Starting simple and gradually evolving into automation, log parsing, and security utilities.
 
 ### **Projects/**
-- Google Cybersecurity Professional Certificate submissions
-- Risk registers, incident reports, threat models
-- Upcoming SOC lab featuring Splunk hunts and detection engineering
+Larger builds including:
+- Google Cybersecurity Professional Certificate labs
+- Network security exercises
+- Future SOC project with Splunk detection, SIEM logs and basic threat hunting
 
 ### **QuickWins/**
-Short, punchy labs that sharpen fundamentals like Linux command mastery, PacketTracer networking, and protocol exploration.
+Short experiments that test single concepts. Linux tasks, Packet Tracer setups and rapid-fire practice.
 
 ---
 
@@ -28,31 +29,29 @@ Short, punchy labs that sharpen fundamentals like Linux command mastery, PacketT
 - Google Cybersecurity Professional Certificate
 - CCNA: Introduction to Networks
 - TryHackMe Pre-Security Path
-- eJPT (planned)
+- eJPT (in process)
 - CEH (planned)
 - OSCP (planned)
 
 ---
 
-## 🔧 Skills and Toolkit
-```
-Networking: IP addressing routing switching
-Linux: file permissions user roles process management
-Python: automation log parsing regex utilities
-Forensics: hashing timeline basics file analysis
-Security Tools: Wireshark tcpdump Nmap Suricata
-Processes: risk registers incident documentation threat modeling
-```
+## 🔧 Skills I’m Developing
+- Networking fundamentals with Cisco Packet Tracer
+- Linux command line, permissions and system basics
+- Python scripting for automation and analysis
+- Security tooling like Wireshark, tcpdump, and Nmap
+- Vulnerability discovery through guided labs and CTF-style practice
 
 ---
 
-## 🌱 Current Roadmap
-- Build and document a SOC home lab
-- Upload 10+ TryHackMe and CTF writeups
-- Develop Python scripts for log correlation and simple alerts
-- Expand projects with vulnerability assessments and packet investigations
+## 🌱 What’s Coming Next
+- A full SOC mini-lab using Splunk for detection and log analysis
+- More TryHackMe writeups
+- Python tools for parsing logs and detecting anomalies
+- A red-team learning path with practical walkthroughs
 
 ---
 
-If you're browsing this repo feel free to explore the folders like you're walking through a digital museum of my learning journey.
+If you’re scrolling through this repo, feel free to follow along as I grow from fundamentals into advanced cybersecurity work.
+
 
