@@ -11,9 +11,9 @@ This repo documents my cybersecurity learning journey through labs, projects, an
   - Small Python and Bash scripts (starting with `Hello_World`, moving into automation).
 - **Projects/**
   - Google Cybersecurity Professional Certificate projects.
-  - Future SOC lab (Splunk detection & log analysis).
+  - Future SOC lab (Splunk detection and log analysis).
 - **QuickWins/**
-  - Bite-sized labs & experiments (Linux VM setup, PacketTracer configs).
+  - Bite-sized labs and experiments (Linux VM setup, PacketTracer configs).
 
 ## 🏆 Certifications (in progress / earned)
 - CCNA: Introduction to Networks ✅
@@ -31,7 +31,7 @@ This repo documents my cybersecurity learning journey through labs, projects, an
 - Vulnerability assessment (TryHackMe labs)
 
 ## 🌱 Next Steps
-- Expand Projects folder with a SOC lab (Splunk + IDS/IPS configs).
+- Expand Projects folder with a SOC lab (Splunk and IDS/IPS configs).
 - Document 10+ TryHackMe writeups.
 - Automate log analysis with Python and upload scripts here.
 
