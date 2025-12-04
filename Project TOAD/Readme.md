@@ -4,7 +4,7 @@
 
 An offline-first mobile education platform designed for students in rural areas with limited internet connectivity.
 
-![TOAD Storyboard](assets/toad_storyboard.png)
+<img width="911" height="915" alt="image" src="https://github.com/user-attachments/assets/f94246bb-234c-4dea-92cf-98ad32f0fd3c" />
 
 ---
 
