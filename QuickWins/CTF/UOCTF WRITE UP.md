@@ -160,6 +160,11 @@ This meant the model's forward pass had **non-differentiable operations** (like 
 
 I used Gemini to help me understand the error, and it explained that if the model uses operations like `argmax` internally, the gradient can't flow backward through them. Dead end #1.
 
+![Gradient Ascent Error](images/error_gradient_ascent.png)
+*The RuntimeError that blocked gradient-based optimization - a key clue that the model had non-differentiable operations*
+
+> **Note:** You can screenshot this error by running the failed gradient ascent script to include the actual error message.
+
 ---
 
 ## Failed Attempt #2: Weight Inspection
@@ -334,6 +339,13 @@ G0G0sQuid(
 
 I inspected closer and found `G0gosqu1d` had a method called `get_ref()`. This was the breakthrough!
 
+### Visualizing the Hidden Features
+
+After extracting the reference tensor, I visualized it to see what the model was looking for:
+
+![Reference Features Visualization](images/ref_features_grid.png)
+*The hidden reference features (showing 64 out of 192 channels) - these high-level features are what the model compares against*
+
 ---
 
 ## The Solution: Model Inversion
@@ -468,7 +480,24 @@ Step 47: Loss = 0.000089
 Converged at step 47!
 ```
 
+**Optimization Progress Visualization:**
+
+![Progress at Step 0](images/progress_0.png)
+*Step 0: Starting from uniform gray noise (Loss = 3.13)*
+
+![Progress at Step 5](images/progress_5.png)
+*Step 5: Initial patterns emerging (Loss = 0.51)*
+
+![Progress at Step 10](images/progress_10.png)
+*Step 10: More defined structure appearing*
+
+![Progress at Step 20](images/progress_20.png)
+*Step 20: Nearly converged - this is the pattern that triggers the backdoor*
+
 I saved the final image as `solution.png` and tested it:
+
+![Final Solution Image](images/solution.png)
+*The final optimized image that matches the hidden reference features*
 
 ```bash
 python chal.py solution.png
@@ -478,7 +507,7 @@ python chal.py solution.png
 
 🎉 **FLAG CAPTURED!** 🎉
 
-The solution image looked like a blurry/abstract pattern (typical of model inversion), but it contained the exact features the model was looking for.
+The solution image looked like a blurry/abstract pattern (typical of model inversion), but it contained the exact features the model was looking for. Even though it doesn't look like anything meaningful to the human eye, the model's feature extractor produces outputs that perfectly match the hidden reference tensor!
 
 ---
 
@@ -495,22 +524,268 @@ This was one of the hardest CTF challenges I've solved, but also one of the most
 
 ---
 
-## Tools Used
+## Tools & Resources Used
 
-- **Python 3.x** - Main programming language
-- **PyTorch** - Deep learning framework
-- **PIL/Pillow** - Image processing
-- **NumPy** - Array operations
-- **ChatGPT** - Help with PyTorch syntax and debugging XOR deobfuscation
-- **Gemini** - Image generation for testing hypotheses
-- **Online XOR calculators** - Decoding obfuscated values
-- **arXiv** - Research papers on model inversion
-- **StackOverflow** - PyTorch optimization examples
-- **VS Code** - Code editor
-- **Kali Linux** - Operating system / CTF environment
+### Development Tools
+
+- **Python 3.11** - Main programming language
+- **PyTorch 2.1.0** - Deep learning framework (<https://pytorch.org/>)
+- **PIL/Pillow 10.0.0** - Image processing library
+- **NumPy 1.24** - Array operations
+- **VS Code** - Code editor with Python extension
+- **Kali Linux 2023.4** - Operating system / CTF environment
+
+### AI Assistants & Online Tools
+
+- **ChatGPT 4** (<https://chat.openai.com/>) - Used for:
+  - Help with PyTorch gradient syntax
+  - Debugging XOR deobfuscation logic
+  - Understanding autograd errors
+  
+- **Google Gemini Pro** (<https://gemini.google.com/>) - Used for:
+  - Generating test images (ImageNet classes, handwritten letters)
+  - Quick Python syntax lookups
+  - Understanding model architecture concepts
+
+### Research & Documentation
+
+- **arXiv.org** - Research papers on model inversion attacks
+  - "Model Inversion Attacks that Exploit Confidence Information"
+  - "Privacy in Deep Learning: A Survey"
+  
+- **Stack Overflow** (<https://stackoverflow.com/>) - PyTorch optimization examples
+  - Questions about custom loss functions
+  - Adam optimizer parameter tuning
+  
+- **PyTorch Documentation** (<https://pytorch.org/docs/>) - Official API reference
+
+### Online Utilities
+
+- **CyberChef** (<https://gchq.github.io/CyberChef/>) - XOR decoding and analysis
+- **Diffchecker** (<https://www.diffchecker.com/>) - Comparing obfuscated vs deobfuscated code
+- **ImageNet Class List** (<https://deeplearning.cms.waikato.ac.nz/user-guide/class-maps/IMAGENET/>) - Class index reference
+- **HexEd.it** (<https://hexed.it/>) - Inspecting binary weight files
+- **Python Tutor** (<https://pythontutor.com/>) - Visualizing code execution for debugging
+
+### Testing & Validation
+
+- **EMNIST Dataset Info** (<https://www.nist.gov/itl/products-and-services/emnist-dataset>) - Class mapping reference
+- **ImageMagick** - Image format conversion (for testing different image types)
+
+---
+
+## How to Upload to GitHub
+
+### Step 1: Prepare Your Repository Structure
+
+Create the following folder structure:
+
+```
+ML-Connoisseur-CTF/
+├── WRITEUP.md
+├── README.md
+├── images/
+│   ├── ref_features_grid.png
+│   ├── progress_0.png
+│   ├── progress_10.png
+│   ├── solution.png
+│   ├── error_gradient_ascent.png (screenshot)
+│   └── loss_graph.png (if you have it)
+├── scripts/
+│   ├── deobfuscate.py
+│   ├── solve_feature_match.py
+│   ├── test_images.py
+│   └── decode_logic.py
+└── challenge-files/
+    ├── chal.py (original)
+    ├── model.py
+    ├── weights.pt (optional - large file)
+    └── requirements.txt
+```
+
+### Step 2: Initialize Git Repository
+
+Open terminal in your project directory:
+
+```bash
+cd "C:\Users\dinee\Downloads\APU\UOTF CTF\ML Connoisseur"
+
+# Initialize git repository
+git init
+
+# Create .gitignore
+echo "*.pt" > .gitignore
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo ".venv/" >> .gitignore
+```
+
+### Step 3: Organize Images for GitHub
+
+Create an `images` folder and copy your screenshots:
+
+```bash
+# Create images directory
+mkdir images
+
+# Copy progress images
+copy progress_*.png images\
+copy ref_features_grid.png images\
+copy solution.png images\
+
+# If you have any error screenshots, add them too
+# (Take screenshots of the errors you encountered during failed attempts)
+```
+
+### Step 4: Update WRITEUP.md to Reference Images
+
+Add image references in your markdown using relative paths:
+
+```markdown
+## Failed Attempt #1: Gradient Ascent
+
+![Gradient Ascent Error](images/error_gradient_ascent.png)
+*Error encountered when trying gradient ascent approach*
+
+## Breakthrough: Model Structure Analysis
+
+![Reference Features Visualization](images/ref_features_grid.png)
+*Visualization of the hidden reference features (64 out of 192 channels)*
+
+## The Solution: Model Inversion
+
+### Optimization Progress
+
+![Progress at Step 0](images/progress_0.png)
+![Progress at Step 10](images/progress_10.png)
+*The image gradually takes shape as it matches the hidden features*
+
+![Final Solution](images/solution.png)
+*Final generated image that triggers the flag*
+```
+
+### Step 5: Create README.md
+
+Create a simple README file:
+
+```bash
+echo "# ML Connoisseur - CTF Write-up" > README.md
+echo "" >> README.md
+echo "A detailed write-up of solving the ML Connoisseur challenge using model inversion." >> README.md
+echo "" >> README.md
+echo "**Flag:** \`uoftctf{m0d3l_1nv3R510N}\`" >> README.md
+echo "" >> README.md
+echo "## Challenge Description" >> README.md
+echo "This challenge involved reverse engineering an obfuscated PyTorch model" >> README.md
+echo "with a hidden backdoor that required model inversion to exploit." >> README.md
+echo "" >> README.md
+echo "## Read the Full Write-up" >> README.md
+echo "[Click here to read WRITEUP.md](WRITEUP.md)" >> README.md
+```
+
+### Step 6: Commit Your Files
+
+```bash
+# Add all files
+git add .
+
+# Commit with message
+git commit -m "Add ML Connoisseur CTF writeup with detailed solution and images"
+```
+
+### Step 7: Create GitHub Repository
+
+1. Go to <https://github.com/new>
+2. Repository name: `ML-Connoisseur-CTF-Writeup` (or your choice)
+3. Description: "Detailed writeup for UofT CTF ML Connoisseur challenge"
+4. Choose **Public** (so others can see your writeup)
+5. **Do NOT** initialize with README (we already have one)
+6. Click "Create repository"
+
+### Step 8: Push to GitHub
+
+GitHub will show you commands. Use these:
+
+```bash
+# Add remote
+git remote add origin https://github.com/YOUR_USERNAME/ML-Connoisseur-CTF-Writeup.git
+
+# Push to GitHub
+git branch -M main
+git push -u origin main
+```
+
+**Note:** If `weights.pt` is too large (>100MB), GitHub will reject it. Either:
+
+- Add it to `.gitignore` (already done above)
+- Or use Git LFS: <https://git-lfs.github.com/>
+
+### Step 9: Verify Images Display Correctly
+
+1. Go to your repository on GitHub
+2. Click on `WRITEUP.md`
+3. Scroll through and verify all images display properly
+4. If images don't show, check:
+   - Path is relative: `images/filename.png` ✅
+   - Not absolute: `C:\Users\...` ❌
+   - File names match exactly (case-sensitive on Linux)
+
+### Step 10: Add Topics/Tags (Optional)
+
+On your GitHub repo page:
+
+1. Click the gear icon next to "About"
+2. Add topics: `ctf`, `writeup`, `machine-learning`, `pytorch`, `model-inversion`, `reverse-engineering`
+3. Save changes
+
+---
+
+## References
+
+### Academic Papers
+
+1. Fredrikson, M., et al. (2015). "Model Inversion Attacks that Exploit Confidence Information and Basic Countermeasures." *ACM CCS 2015*. <https://doi.org/10.1145/2810103.2813677>
+
+2. Shokri, R., et al. (2017). "Membership Inference Attacks Against Machine Learning Models." *IEEE S&P 2017*. <https://doi.org/10.1109/SP.2017.41>
+
+3. Carlini, N., et al. (2019). "The Secret Sharer: Evaluating and Testing Unintended Memorization in Neural Networks." *USENIX Security 2019*. <https://www.usenix.org/conference/usenixsecurity19/presentation/carlini>
+
+### Documentation & Tutorials
+
+- PyTorch Autograd Tutorial: <https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html>
+- PyTorch Optimization: <https://pytorch.org/docs/stable/optim.html>
+- Model Inversion Techniques: <https://github.com/model-inversion/awesome-model-inversion>
+
+### Tools Documentation
+
+- CyberChef XOR Operations: <https://github.com/gchq/CyberChef/wiki/XOR>
+- Pillow Image Processing: <https://pillow.readthedocs.io/>
+- TorchVision Utils: <https://pytorch.org/vision/stable/utils.html>
+
+### CTF Resources
+
+- UofT CTF Official Site: <https://uoftctf.org/>
+- CTFtime (for tracking CTF events): <https://ctftime.org/>
+
+---
 
 ## Final Thoughts
 
 The flag `uoftctf{m0d3l_1nv3R510N}` perfectly describes the solution - **model inversion**. This challenge taught me that ML-based CTFs aren't just about knowing machine learning theory, but also about persistence, creativity, and being willing to try (and fail) multiple approaches.
 
-Special thanks to the challenge authors for creating such an interesting problem!
+Key takeaways:
+
+1. Always try multiple angles - 6 failed attempts led to the breakthrough
+2. Read obfuscated code carefully - the clues were hidden in plain sight
+3. Understand the architecture before optimizing - knowing the model structure was crucial
+4. Model inversion is a powerful technique for both attacking and defending ML systems
+
+Special thanks to the UofT CTF team for creating such an educational and challenging problem!
+
+---
+
+**Author:** [Your Name/Handle]  
+**Date:** January 2026  
+**CTF:** UofT CTF 2026  
+**Category:** Machine Learning / Reverse Engineering  
+**Difficulty:** Hard
