@@ -10,84 +10,122 @@
 ## CHARACTER ASSIGNMENTS
 
 **ALEX (The Lead / Optimist)** - Main narrator, idealistic, never gives up  
-**JORDAN (The Skeptic / Pragmatist)** - Questions everything, realistic, brings team back to earth  
-**RILEY (The Researcher / Theorist)** - Deep diver, loves reading papers, brings academic insights  
-**MORGAN (The Wildcard / Coder)** - Gets hands dirty with code, spontaneous, breakthrough thinker  
+
+**DINEESH (The Skeptic / Pragmatist)** - Questions everything, realistic, brings team back to earth  
+
+**SASWIN (The Researcher / Theorist)** - Deep diver, loves reading papers, brings academic insights  
+
+**XINTONG (The Wildcard / Coder)** - Gets hands dirty with code, spontaneous, breakthrough thinker  
 
 ---
 
 ## PROPS & SETUP
 
-**Physical Props:**
+### Physical Props
 
 - 4 laptops (or fake laptops with printouts)
 - Whiteboard/projector showing: code snippets, error messages, progress images
 - Coffee cups (visual gag - they get increasingly tired)
 - Printed "FAILED" stamps/signs to hold up dramatically
 
-**Digital Props (Slides):**
+### Digital Slides with Images
 
-- Slide 1: Challenge description
-- Slide 2-7: Each failed attempt with images
-- Slide 8: The breakthrough (reference features image)
-- Slide 9-12: The solution process
-- Slide 13: Final flag reveal
+- **Slide 1:** Title + Challenge description
+- **Slide 2:** Deobfuscated code snippet
+- **Slide 3:** Failed Attempt #1 - ![Gradient Error](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/error_gradient_ascent.png)
+- **Slide 4:** Failed Attempts #2-5 montage
+- **Slide 5:** The Breakthrough - Model architecture diagram
+- **Slide 6:** Reference Features - ![Reference](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/ref_features_grid.png)
+- **Slide 7:** Progress Step 0 - ![Progress 0](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_0.png)
+- **Slide 8:** Progress Step 5 - ![Progress 5](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_5.png)
+- **Slide 9:** Progress Step 10 - ![Progress 10](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_10.png)
+- **Slide 10:** Progress Step 20 - ![Progress 20](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_20.png)
+- **Slide 11:** Final Solution - ![Solution](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/solution.png)
+- **Slide 12:** Flag Reveal (animated)
+- **Slide 13:** Lessons Learned
+
+---
+---
+
+# ACT 1: THE CHALLENGE (3 minutes)
 
 ---
 
-## ACT 1: THE CHALLENGE (3 minutes)
-
-### SCENE 1: THE BRIEFING
+## SCENE 1: THE BRIEFING
 
 *[Lights up. All 4 team members enter from different sides, looking excited but nervous. They meet at center stage. ALEX holds a printout.]*
+
+<br>
 
 **ALEX:**  
 *(enthusiastically)*  
 Alright team, we've got 48 hours to crack the "ML Connoisseur" challenge. First place gets major bragging rights AND goes on our resumes.
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(scrolling on laptop, skeptical)*  
 "ML Connoisseur"? Sounds pretentious. What does it even do?
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(quickly types, reads screen)*  
 It's a digit classifier. Feed it an image of 0 through 9, it tells you what number it is.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(adjusting glasses, reading documentation)*  
 But here's the catch - we need to make it output a number GREATER than 9. Which shouldn't be possible for a digit classifier.
 
+<br>
+
 **ALEX:**  
 Unless...
+
+<br>
 
 **ALL TOGETHER:**  
 *(turning to audience)*  
 There's a backdoor.
 
+<br>
+
 *[Dramatic pause. Thunder sound effect (optional).]*
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 Great. A backdoor in 1900 lines of obfuscated PyTorch code. What could possibly go wrong?
 
 ---
 
-### SCENE 2: DEOBFUSCATION
+## SCENE 2: DEOBFUSCATION
 
-*[MORGAN moves to center, typing frantically. Others gather around.]*
+*[XINTONG moves to center, typing frantically. Others gather around.]*
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 First problem - the main script is completely obfuscated. Look at this mess.
 
 *[Projects slide showing obfuscated XOR code.]*
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(leaning in)*  
 Those are XOR operations. Classic obfuscation technique. If we can find the key...
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 Already on it. Testing all 256 possible keys...  
 *(dramatic pause, typing)*  
 Got it! Key is 42.
+
+<br>
 
 **ALEX:**  
 *(laughs)*  
@@ -95,67 +133,96 @@ Got it! Key is 42.
 
 *[Projects deobfuscated code.]*
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(reading)*  
 So the flag triggers when the model outputs greater than 9. Simple enough.  
 *(pause)*  
 Too simple.
+
+<br>
 
 **ALEX:**  
 *(determined)*  
 Let's try the obvious approach first. Gradient ascent!
 
 ---
+---
 
-## ACT 2: THE FAILURES (8 minutes)
+# ACT 2: THE FAILURES (8 minutes)
 
 *[Montage music begins - something like "Eye of the Tiger" but nerdier. Team moves in coordinated choreography between "attempts."]*
 
-### ATTEMPT 1: GRADIENT ASCENT DISASTER
+---
+
+## ATTEMPT 1: GRADIENT ASCENT DISASTER
 
 **ALEX:**  
 *(confidently typing)*  
 If we use activation maximization, we can generate an image that maximizes the output!
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(coding frantically)*  
 Setting up the optimizer... Adam, learning rate 0.01... backward pass... and...
 
+<br>
+
 *[Loud ERROR sound. Red screen flashes.]*
+
+*[Projects slide with error screenshot]*
+
+<br>
 
 **ALL:**  
 *(reading error in unison)*  
 "RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn"
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(explaining to audience)*  
 Translation: the model has non-differentiable operations. ArgMax, integer comparisons... gradient can't flow backward.
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(holding up "FAILED #1" sign)*  
 Dead end number one.
 
-*[ALEX slumps. MORGAN pats shoulder encouragingly.]*
+<br>
+
+*[ALEX slumps. XINTONG pats shoulder encouragingly.]*
 
 ---
 
-### ATTEMPT 2: WEIGHT INSPECTION
+## ATTEMPT 2: WEIGHT INSPECTION
 
-**RILEY:**  
+**SASWIN:**  
 *(stepping forward with laptop)*  
 Maybe we can reverse-engineer the architecture by examining the weight file.
 
 *[Projects weight keys on screen.]*
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 Let's see... "G0Gosquid.g0G0sQuId_580406"... "GOg0sqU1d.ParameterList"...
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(squinting)*  
 Is that... is that even English?
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 It's obfuscated variable names. Could be a ResNet, VGG, or something completely custom.
+
+<br>
 
 **ALEX:**  
 *(searching on laptop)*  
@@ -163,17 +230,21 @@ I'm searching these tensor shapes online...
 *(pause)*  
 Nothing. Absolutely nothing.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(holding up "FAILED #2" sign)*  
 Dead end number two.
 
 ---
 
-### ATTEMPT 3-5: THE MONTAGE OF FAILURE
+## ATTEMPT 3-5: THE MONTAGE OF FAILURE
 
 *[Quick-fire sequence. Each person takes a failed attempt. Coffee cups multiply on stage.]*
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(holding ImageNet class list)*  
 ATTEMPT 3: Maybe it's trained on ImageNet! Testing goldfinch... class 11...  
 *(checks output)*  
@@ -181,13 +252,17 @@ Output: 8.
 *(to camera)*  
 Not 11. Failed.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(holding picture of Lena)*  
 ATTEMPT 4: ML culture references! The famous Lena image... Geoffrey Hinton's face...  
 *(checks laptop)*  
 Random outputs. Failed.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(holding EMNIST dataset paper)*  
 ATTEMPT 5: Extended MNIST with letters! 'A' should be class 10...  
 *(types, checks)*  
@@ -195,28 +270,40 @@ Output: 4.
 *(sighs)*  
 Failed.
 
+<br>
+
 **ALEX:**  
 *(standing, looking defeated)*  
 That's 5 dead ends. We've tried everything.
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(checking watch)*  
 And we're 36 hours in with nothing to show.
 
 ---
 
-### THE DARK MOMENT
+## THE DARK MOMENT
 
 *[Team sits in dejected circle. Lights dim slightly. Quiet moment.]*
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 Maybe it's impossible.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 Maybe we're missing something obvious.
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 Maybe we should just submit a writeup of our failures and call it a learning experience.
+
+<br>
 
 **ALEX:**  
 *(standing up slowly)*  
@@ -224,19 +311,28 @@ No. We're not giving up.
 *(intensely)*  
 We haven't actually READ the model code. We've been running it, testing it, but not READING it.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 It's 1900 lines of garbage!
+
+<br>
 
 **ALEX:**  
 Then let's read 1900 lines of garbage.
 
 ---
+---
 
-## ACT 3: THE BREAKTHROUGH (5 minutes)
+# ACT 3: THE BREAKTHROUGH (5 minutes)
 
-### SCENE 3: THE EUREKA MOMENT
+---
+
+## SCENE 3: THE EUREKA MOMENT
 
 *[ALEX sits at laptop. Others watch skeptically. Time-lapse effect - ALEX scrolls, squints, types, scrolls more. Others bring coffee, check phones.]*
+
+<br>
 
 **ALEX:**  
 *(suddenly)*  
@@ -244,27 +340,41 @@ Wait. WAIT.
 *(louder)*  
 **WAIT!**
 
+<br>
+
 *[Everyone jumps up.]*
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 What? What did you find?
+
+<br>
 
 **ALEX:**  
 *(pointing at screen)*  
 Line 1578. There's a hardcoded condition:  
 "if gog0sQu1D == 28143083"
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 A magic number check! That's a backdoor trigger!
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 But we don't know what that number represents.
+
+<br>
 
 **ALEX:**  
 *(typing)*  
 Let me print the model structure...
 
 *[Projects model architecture on screen.]*
+
+<br>
 
 **ALEX:**  
 Look! Two modules:  
@@ -274,16 +384,24 @@ Look! Two modules:
 *(gasps)*  
 With a method called "get_ref()"!
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(excited, standing up)*  
 Get reference! It's storing a reference tensor!
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 So the model isn't just classifying...
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(realizing)*  
 It's COMPARING input features to a hidden reference!
+
+<br>
 
 **ALL:**  
 *(turning to audience)*  
@@ -291,69 +409,105 @@ It's COMPARING input features to a hidden reference!
 
 ---
 
-### SCENE 4: THE SOLUTION
+## SCENE 4: THE SOLUTION
 
-**RILEY:**  
+**SASWIN:**  
 *(pulls out academic paper)*  
 I've read about this! Model inversion attacks from Fredrikson et al. If we extract the reference features and optimize an input to match them—
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(already typing)*  
 Way ahead of you. Extracting reference tensor now...
 
-*[Projects reference features grid image.]*
+<br>
 
-**JORDAN:**  
+*[Projects reference features grid image - Slide 6.]*
+
+<br>
+
+**DINEESH:**  
 *(looking at image)*  
 That's... noise?
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 High-level features. Not human-readable, but perfect for optimization.
+
+<br>
 
 **ALEX:**  
 *(taking over laptop)*  
-Morgan, set up an Adam optimizer. Learning rate 0.05. We'll start from a gray image and minimize MSE loss between our features and the reference.
+Xintong, set up an Adam optimizer. Learning rate 0.05. We'll start from a gray image and minimize MSE loss between our features and the reference.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(typing rapidly)*  
 Loss function ready. Input tensor initialized. Starting optimization...
 
-*[Projects screen showing loss decreasing.]*
+<br>
 
-**MORGAN:**  
+*[Projects screen showing loss decreasing. Show Slides 7-10 as optimization progresses.]*
+
+<br>
+
+**XINTONG:**  
 Step 0: Loss = 3.12  
-Step 1: Loss = 2.26  
-Step 5: Loss = 0.51...
+*(Shows Slide 7: Progress 0)*
 
-**JORDAN:**  
+Step 1: Loss = 2.26  
+
+Step 5: Loss = 0.51...  
+*(Shows Slide 8: Progress 5)*
+
+<br>
+
+**DINEESH:**  
 It's working!
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(showing progress images)*  
 Look - the image is taking shape!
 
-*[Projects progression: progress_0, progress_5, progress_10, progress_20.]*
+<br>
+
+*[Projects progression: Slides 9 (progress_10) and 10 (progress_20).]*
+
+<br>
 
 **ALEX:**  
 *(watching intently)*  
 Come on... come on...
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 Step 47: Loss = 0.000089  
 CONVERGED!
 
 ---
 
-### SCENE 5: THE FLAG REVEAL
+## SCENE 5: THE FLAG REVEAL
 
-*[Dramatic pause. All team members gather around MORGAN's laptop.]*
+*[Dramatic pause. All team members gather around XINTONG's laptop.]*
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(typing)*  
 Running the test...  
 `python chal.py solution.png`
 
-*[Pause. Screen shows thinking/loading animation.]*
+<br>
+
+*[Pause. Screen shows thinking/loading animation. Projects Slide 11: Final solution image.]*
+
+<br>
 
 **SCREEN:**  
 
@@ -361,163 +515,239 @@ Running the test...
 you got it!
 ```
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 *(disbelieving)*  
 No way.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 *(checking)*  
 The flag is...
+
+<br>
 
 **ALEX:**  
 *(reading)*  
 uoftctf{m0d3l_1nv3R510N}
 
+<br>
+
+*[Projects Slide 12: Flag reveal with animation.]*
+
+<br>
+
 **ALL:**  
 *(celebrating, high-fiving)*  
 **YES!!!**
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 *(to audience)*  
 Model inversion. The flag was literally telling us the solution the whole time!
 
 ---
+---
 
-## ACT 4: THE LESSON (2 minutes)
+# ACT 4: THE LESSON (2 minutes)
 
-*[Team moves to front of stage, addressing audience directly.]*
+*[Team moves to front of stage, addressing audience directly. Projects Slide 13: Lessons Learned.]*
+
+<br>
 
 **ALEX:**  
 So what did we learn from 48 hours of failure and one moment of triumph?
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 Never give up after dead ends. We had SIX failed attempts - gradient ascent, weight inspection, ImageNet, ML culture, EMNIST, and more ImageNet.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 Read the code, not just run it. The answer was hidden in plain sight in line 1578.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 Model inversion is powerful. We reconstructed the exact input needed without ever seeing the original reference image.
+
+<br>
 
 **ALEX:**  
 And most importantly...  
 *(turning to team)*  
 Teamwork. Each of us brought something different:
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 Skepticism kept us grounded.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 Research gave us the academic foundation.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 Coding skills made it real.
+
+<br>
 
 **ALEX:**  
 And persistence got us to the finish line.
 
 ---
 
-### FINALE
+## FINALE
 
 **ALL:**  
 *(to audience)*  
 In CTF challenges - and in real cybersecurity - the impossible is just...
 
+<br>
+
 **ALEX:**  
 An optimization problem.
 
-**JORDAN:**  
+<br>
+
+**DINEESH:**  
 With the right approach.
 
-**RILEY:**  
+<br>
+
+**SASWIN:**  
 The right research.
 
-**MORGAN:**  
+<br>
+
+**XINTONG:**  
 And the right team.
+
+<br>
 
 **ALL:**  
 Thank you!
 
+<br>
+
 *[Team takes a bow. Fade to black.]*
 
 ---
+---
 
-## PRODUCTION NOTES
+# PRODUCTION NOTES
 
-### Timing Breakdown
+## Timing Breakdown
 
-- Act 1 (The Challenge): 3 min
-- Act 2 (The Failures): 8 min  
-- Act 3 (The Breakthrough): 5 min
-- Act 4 (The Lesson): 2 min  
+- **Act 1** (The Challenge): 3 min
+- **Act 2** (The Failures): 8 min  
+- **Act 3** (The Breakthrough): 5 min
+- **Act 4** (The Lesson): 2 min  
 - **Total: ~18 minutes**
 
-### Technical Requirements
+---
 
-1. **Projector/Screen** - Essential for showing code, errors, images
-2. **Sound Effects** - Error beeps, success chimes (optional but adds drama)
-3. **Lighting** - Dim for "dark moment," brighten for breakthrough
-4. **Props** - Laptops, coffee cups, printed "FAILED" signs
+## Technical Requirements
 
-### Tips for Distinction-Level Performance
+### 1. Projector/Screen
 
-1. **Memorize, Don't Read**  
-   - Know your lines cold
-   - Make eye contact with audience
-   - Be natural, not robotic
+Essential for showing code, errors, images
 
-2. **Physical Acting**  
-   - Use the stage - move around
-   - React to each other's discoveries
-   - Show frustration, excitement, relief
+### 2. Sound Effects (Optional)
 
-3. **Timing & Pacing**  
-   - Don't rush technical explanations
-   - Build dramatic tension before reveals
-   - Pause for laughs (there are comedic moments)
+- Error beeps
+- Success chimes
+- Background music for montages
 
-4. **Audience Engagement**  
-   - Make eye contact
-   - Explain jargon simply
-   - Show, don't just tell (use the images!)
+### 3. Lighting
 
-5. **Technical Accuracy**  
-   - Know your technical content
-   - Be ready for Q&A after
-   - Have backup slides with more detail
+- Dim for "dark moment"
+- Brighten for breakthrough
 
-6. **Team Chemistry**  
-   - Play off each other's energy
-   - Support scene partners
-   - High-five/celebrate together authentically
+### 4. Props
 
-### Customization Options
+- Laptops
+- Coffee cups
+- Printed "FAILED" signs
 
-**Make it Funnier:**  
+---
+
+## Tips for Distinction-Level Performance
+
+### 1. Memorize, Don't Read
+
+- Know your lines cold
+- Make eye contact with audience
+- Be natural, not robotic
+
+### 2. Physical Acting
+
+- Use the stage - move around
+- React to each other's discoveries
+- Show frustration, excitement, relief
+
+### 3. Timing & Pacing
+
+- Don't rush technical explanations
+- Build dramatic tension before reveals
+- Pause for laughs (there are comedic moments)
+
+### 4. Audience Engagement
+
+- Make eye contact
+- Explain jargon simply
+- Show, don't just tell (use the images!)
+
+### 5. Technical Accuracy
+
+- Know your technical content
+- Be ready for Q&A after
+- Have backup slides with more detail
+
+### 6. Team Chemistry
+
+- Play off each other's energy
+- Support scene partners
+- High-five/celebrate together authentically
+
+---
+
+## Customization Options
+
+### Make it Funnier
 
 - Add more coffee-drinking gags
-- Have JORDAN make sarcastic comments about error messages
-- MORGAN can rage-type during frustrating moments
+- Have DINEESH make sarcastic comments about error messages
+- XINTONG can rage-type during frustrating moments
 
-**Make it More Technical:**  
+### Make it More Technical
 
-- Add a "chalk talk" moment where RILEY explains model inversion on whiteboard
+- Add a "chalk talk" moment where SASWIN explains model inversion on whiteboard
 - Show actual code snippets during montage
 - Include a "hacking montage" with Matrix-style visuals
 
-**Make it More Dramatic:**  
+### Make it More Dramatic
 
 - Add a countdown clock (48 hours → 24 → 12 → etc.)
 - Rival team subplot (another team is also trying to solve it)
 - Stakes: "If we don't solve this, we fail the course!"
 
-### Costume Suggestions
+---
+
+## Costume Suggestions
 
 - **ALEX:** Hoodie, confident hacker vibe
-- **JORDAN:** Business casual, pragmatic look  
-- **RILEY:** Glasses, academic/researcher style
-- **MORGAN:** Band t-shirt, chaotic coder energy
+- **DINEESH:** Business casual, pragmatic look  
+- **SASWIN:** Glasses, academic/researcher style
+- **XINTONG:** Band t-shirt, chaotic coder energy
 
 ---
 
