@@ -160,7 +160,7 @@ This meant the model's forward pass had **non-differentiable operations** (like 
 
 I used Gemini to help me understand the error, and it explained that if the model uses operations like `argmax` internally, the gradient can't flow backward through them. Dead end #1.
 
-![Gradient Ascent Error](images/error_gradient_ascent.png)
+![Gradient Ascent Error](images/error_gradient_ascent.png)/
 *The RuntimeError that blocked gradient-based optimization - a key clue that the model had non-differentiable operations*
 
 > **Note:** You can screenshot this error by running the failed gradient ascent script to include the actual error message.
