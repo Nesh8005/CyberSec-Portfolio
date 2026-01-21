@@ -160,7 +160,7 @@ This meant the model's forward pass had **non-differentiable operations** (like 
 
 I used Gemini to help me understand the error, and it explained that if the model uses operations like `argmax` internally, the gradient can't flow backward through them. Dead end #1.
 
-![Gradient Ascent Error](images/error_gradient_ascent.png)/
+![Gradient Ascent Error](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/error_gradient_ascent.png)
 *The RuntimeError that blocked gradient-based optimization - a key clue that the model had non-differentiable operations*
 
 > **Note:** You can screenshot this error by running the failed gradient ascent script to include the actual error message.
@@ -343,7 +343,7 @@ I inspected closer and found `G0gosqu1d` had a method called `get_ref()`. This w
 
 After extracting the reference tensor, I visualized it to see what the model was looking for:
 
-![Reference Features Visualization](images/ref_features_grid.png)
+![Reference Features Visualization](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/ref_features_grid.png)
 *The hidden reference features (showing 64 out of 192 channels) - these high-level features are what the model compares against*
 
 ---
@@ -482,21 +482,21 @@ Converged at step 47!
 
 **Optimization Progress Visualization:**
 
-![Progress at Step 0](images/progress_0.png)
+![Progress at Step 0](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_0.png)
 *Step 0: Starting from uniform gray noise (Loss = 3.13)*
 
-![Progress at Step 5](images/progress_5.png)
+![Progress at Step 5](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_5.png)
 *Step 5: Initial patterns emerging (Loss = 0.51)*
 
-![Progress at Step 10](images/progress_10.png)
+![Progress at Step 10](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_10.png)
 *Step 10: More defined structure appearing*
 
-![Progress at Step 20](images/progress_20.png)
+![Progress at Step 20](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/progress_20.png)
 *Step 20: Nearly converged - this is the pattern that triggers the backdoor*
 
 I saved the final image as `solution.png` and tested it:
 
-![Final Solution Image](images/solution.png)
+![Final Solution Image](https://raw.githubusercontent.com/Nesh8005/CyberSec-Portfolio/main/QuickWins/CTF/solution.png)
 *The final optimized image that matches the hidden reference features*
 
 ```bash
