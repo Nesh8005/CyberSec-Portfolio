@@ -75,7 +75,8 @@ sudo systemctl restart grafana-server
 ```bash
 sudo apt install postgresql postgresql-contrib -y
 sudo -u postgres psql -c "CREATE DATABASE satellite_db;"
-sudo -u postgres psql -c "CREATE USER astro WITH PASSWORD 'AstroPass2024!';"
+# Note: The \! is used to escape the exclamation mark in bash
+sudo -u postgres psql -c "CREATE USER astro WITH PASSWORD 'AstroPass2024\!'; "
 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE satellite_db TO astro;"
 ```
 
@@ -83,7 +84,7 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE satellite_db TO astro
 ```bash
 # Create astro user
 sudo useradd -m -s /bin/bash astro
-echo "astro:AstroPass2024!" | sudo chpasswd
+echo "astro:AstroPass2024\!" | sudo chpasswd
 
 # Create home directory structure
 sudo -u astro mkdir -p /home/astro/{.ssh,.config}
