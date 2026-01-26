@@ -16,7 +16,21 @@ To test the machine as a player, follow these steps:
    ```
 3. **Access the web app**: Open `http://localhost` in your browser.
 
-## 2. Playthrough
+## Troubleshooting & Updates
+If you need to update the files and re-test:
+1. **Stop and Remove existing container**:
+   ```bash
+   sudo docker stop archival-test
+   sudo docker rm archival-test
+   ```
+2. **Rebuild the image**:
+   ```bash
+   sudo docker build -t archival .
+   ```
+3. **Run the new container**:
+   ```bash
+   sudo docker run -d -p 80:80 --name archival-test archival
+   ```
 
 ### Step 1: Web Foothold
 1. Visit `http://localhost/index.php`.
