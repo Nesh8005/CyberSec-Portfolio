@@ -22,11 +22,16 @@ sudo hostnamectl set-hostname spacedeck
 
 ### 2. Install Grafana 11.2.0 (Vulnerable Version)
 ```bash
-# Add Grafana GPG key
-wget -q -O - https://apt.grafana.com/gpg.key | sudo apt-key add -
+# Install dependencies
+sudo apt update
+sudo apt install -y gnupg2 curl
+
+# Add Grafana GPG key properly (modern way)
+sudo mkdir -p /etc/apt/keyrings/
+wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
 
 # Add Grafana repository
-echo "deb https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 
 # Install specific version
 sudo apt update
