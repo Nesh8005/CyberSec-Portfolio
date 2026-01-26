@@ -290,3 +290,4 @@ spacedeck@spacedeck-VMware-Virtual-Platform:~/Desktop$ ls -F ~
 Desktop/  Documents/  Downloads/  Music/  Pictures/  Public/  snap/  Templates/  Videos/
 spacedeck@spacedeck-VMware-Virtual-Platform:~/Desktop$ 
 
+find ~ -type d -name "SpaceDeck_WebFiles" 2>/dev/null
