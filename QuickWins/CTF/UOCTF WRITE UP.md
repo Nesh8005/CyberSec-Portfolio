@@ -519,12 +519,27 @@ The solution image looked like a blurry/abstract pattern (typical of model inver
 
 ## Lessons Learned
 
-1. **Don't give up after dead ends** - I had 6 failed approaches before finding the solution
-2. **Read the obfuscated code carefully** - The answer was hidden in `model.py` all along
-3. **Model inversion is powerful** - Even without knowing what the reference image looks like, you can reconstruct an input that triggers the backdoor
-4. **Understanding model architecture matters** - Once I realized there were two separate modules (feature extractor + reference holder), the solution became clear
-5. **PyTorch autograd is amazing** - It made the optimization trivial once I understood the problem
-6. **Use online resources wisely** - ChatGPT, Gemini, StackOverflow, and arXiv papers were all helpful at different stages
+### Technical Takeaways
+
+1. **The Power of Model Inversion**  
+   This challenge highlighted a critical vulnerability in ML models. We often focus on adversarial attacks (fooling the model), but *model inversion* allows attackers to recover sensitive hidden data (like the reference tensor) by optimizing the input against the model's weights.
+
+2. **PyTorch as an Attack Tool**  
+   We typically use PyTorch's `autograd` for training, but this challenge demonstrated its utility for attacks. By freezing the model parameters and optimizing the *input tensor* instead, we effectively "reversed" the model's logic to find the backdoor key.
+
+3. **White-Box Analysis is Essential**  
+   We spent significant time on black-box testing (guessing inputs like ImageNet classes), which led to dead ends. The breakthrough only came when we shifted to white-box analysis—reading the obfuscated code to understand the underlying architecture (Feature Extractor + Reference Comparator).
+
+4. **Security Through Obscurity Fails**  
+   The heavy obfuscation (XOR strings, `ParameterList`) made the code hard to read but did not secure the underlying logic. Once deobfuscated, the backdoor mechanism was exposed, proving that hiding code is not a substitute for secure design.
+
+### Process & Methodology
+
+1. **Persistence Through Failure**  
+   We documented 6 distinct failed approaches (Gradient Ascent, Weight Inspection, EMNIST, etc.) before finding the solution. Each failure was a necessary step that eliminated incorrect hypotheses and guided us toward the architectural analysis.
+
+2. **Don't Just Run It, Read It**  
+   Our biggest hurdle was avoiding the 1,900 lines of obfuscated code. The solution (the `if gog0sQu1D == ...` check) was hidden in plain sight, teaching us that deep code review is sometimes unavoidable.
 
 This was one of the hardest CTF challenges I've solved, but also one of the most educational!
 
@@ -579,7 +594,6 @@ This was one of the hardest CTF challenges I've solved, but also one of the most
 - **ImageMagick** - Image format conversion (for testing different image types)
 
 ---
-
 
 ## References
 
