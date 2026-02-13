@@ -625,7 +625,7 @@ Special thanks to the UofT CTF team for creating such an educational and challen
 
 ---
 
-**Author:** [Your Name/Handle]  
+**Author:** Dineesh
 **Date:** January 2026  
 **CTF:** UofT CTF 2026  
 **Category:** Machine Learning / Reverse Engineering  
